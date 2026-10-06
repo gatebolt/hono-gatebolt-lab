@@ -20,6 +20,8 @@ permissions:
 jobs:
   coverage:
     name: 'Coverage'
+    # Disabled in this copy: the upload needs the Codecov account of honojs/hono.
+    if: false
     runs-on: ubuntu-latest
     needs:
       - main
