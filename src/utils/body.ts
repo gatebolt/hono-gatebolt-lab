@@ -104,7 +104,7 @@ export const parseBody: ParseBody = async (
   const { all = false, dot = false } = options
 
   const headers = isRawRequest(request) ? request.headers : request.raw.headers
-  const contentType = headers.get('Content-Type')
+  const contentType = headers.get('Content-Type')?.toLowerCase()
 
   if (
     contentType?.startsWith('multipart/form-data') ||
