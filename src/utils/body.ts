@@ -106,9 +106,10 @@ export const parseBody: ParseBody = async (
   const headers = isRawRequest(request) ? request.headers : request.raw.headers
   const contentType = headers.get('Content-Type')
 
-  const mediaType = contentType?.split(';')[0].trim().toLowerCase()
-
-  if (mediaType === 'multipart/form-data' || mediaType === 'application/x-www-form-urlencoded') {
+  if (
+    contentType?.startsWith('multipart/form-data') ||
+    contentType?.startsWith('application/x-www-form-urlencoded')
+  ) {
     return parseFormData(request, { all, dot })
   }
 

@@ -109,8 +109,7 @@ export const bufferToFormData = (
 ): Promise<FormData> => {
   const response = new Response(arrayBuffer, {
     headers: {
-      // Normalize the media type (case-insensitive) while keeping parameters like the boundary
-      'Content-Type': contentType.replace(/^[^;]+/, (mediaType) => mediaType.toLowerCase()),
+      'Content-Type': contentType,
     },
   })
   return response.formData()
